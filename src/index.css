@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+#mealForm {
+  width: 150px;
+  padding: 10px;
+}
+
+#mealNameInput {
+  padding: 10px;
+}

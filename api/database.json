@@ -1,0 +1,15 @@
+{
+    "users": [{
+        "userName": "Smile",
+        "email": "fun@fun.com",
+        "id": 1
+    }],
+    "meals": [{
+        "nameOfMeal": "tacos",
+        "date": "1/1/12",
+        "url":"www.yum.com",
+        "dayOfTheWeek":"Monday",
+        "userId": 1,
+        "id": 1
+    }]
+  }
