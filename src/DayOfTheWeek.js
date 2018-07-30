@@ -9,10 +9,11 @@ export default class DayOfTheWeek extends Component {
         mealsToEdit: {}
     }
 
-    //"fetching" the state from the database 
+    // "fetching" the state from the database 
     componentDidMount() {
         Database.gettingAllMealsFromDatabase()
             .then(meals => {
+                // console.log("meals", meals)
                 this.setState({ meals: meals })
             }
             )
@@ -34,50 +35,68 @@ export default class DayOfTheWeek extends Component {
         event.preventDefault()
         // let timestamp = Moment().format("YYYY-MM-DD hh:mm:ss a");
         const newObject = {
-            message: this.state.MealCard,
+            nameOfMeal: this.state.nameOfMeal,
+            date: this.state.date,
+            url: this.state.url,
             // creationDateTime: timestamp,
             userId: Database.getIdOfCurrentUser()
         }
         Database.addMeal(newObject)
             .then(DayOfTheWeek => {
-                this.setState({ meals: DayOfTheWeek })
+                Database.gettingAllMealsFromDatabase()
+                    .then(meals => {
+                        this.setState({ meals: meals })
+                    }
+                    )
             })
     }
 
 
     render() {
         return (
-            <form id="mealForm" onSubmit={this.addMeal}>
-                <h1 id="day-title" className="h3 mb-3 font-weight-normal">Monday</h1>
-                
-                <label id="mealNameInput" htmlFor="MealName">
-                    New Meal:
+            <div>
+                <form id="mealForm" onSubmit={this.addMeal.bind(this)}>
+                    <h1 id="day-title" className="h3 mb-3 font-weight-normal">Monday</h1>
+
+                    <label htmlFor="nameOfMeal">
+                        New Meal:
                 </label>
-                <input onChange={this.messageFormInput} type="text"
-                    id="MealName"
-                    placeholder="Enter Meal"
-                    required="" autoFocus="" />
-                
-                <label htmlFor="MealDate">
-                    Date:
+                    <input onChange={this.messageFormInput} type="text"
+                        id="nameOfMeal"
+                        placeholder="Enter Meal"
+                        required="" autoFocus="" />
+
+                    <label htmlFor="date">
+                        Date:
                 </label>
-                <input id="datepicker" onChange={this.messageFormInput} type="text"
-                    id="MealDate"
-                    placeholder="Enter Date"
-                    required="" autoFocus="" />
-                
-                <label htmlFor="MealRecipeURL">
-                    Recipe URL:
+                    <input id="datepicker" onChange={this.messageFormInput} type="date"
+                        id="date"
+                        placeholder="Enter Date"
+                        required="" autoFocus="" />
+
+                    <label htmlFor="url">
+                        Recipe URL:
                 </label>
-                <input onChange={this.messageFormInput} type="text"
-                    id="MealRecipeURL"
-                    placeholder="Optional"
-                    required="" autoFocus="" />
-                
-                <button type="submit">
-                    Submit
+                    <input onChange={this.messageFormInput} type="text"
+                        id="url"
+                        placeholder="Optional"
+                        required="" autoFocus="" />
+
+                    <button type="submit">
+                        Submit
                 </button>
-            </form>
+                </form>
+
+                {
+                    this.state.meals.map(meal =>
+                        // console.log("meal in render", meal.id)
+                        <MealCard key={meal.id}
+                        {...this.props} 
+                            // EditChat={this.EditChat} 
+                            meal={meal} />
+                    )
+                }
+            </div>
         )
     }
 }
