@@ -6,7 +6,6 @@ export default props => {
     // console.log(props, "props")
     return (
         <React.Fragment>
-        <div>
         <div className="card-body">
                         <h5 className="card-title">
                             {props.meal.nameOfMeal}
@@ -17,9 +16,9 @@ export default props => {
                         <p>
                             {props.meal.url}
                         </p>
+                        <a href="#" onClick={() => props.editMeal(props.meal.id)}>Edit</a>
+                        <a href="#" onClick={() => props.deleteMeal(props.meal.id)}>Delete</a>
                     </div>
-                {/* <a href="#" onClick={() => props.EditChat(props.message.id)}>Edit</a> */}
-        </div>
         </React.Fragment>
     )
 }

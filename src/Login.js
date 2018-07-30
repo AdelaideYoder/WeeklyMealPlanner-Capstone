@@ -20,7 +20,7 @@ export default class Login extends Component {
         e.preventDefault()
         APIManager.getUserByUserName(this.state.userName)
         .then ((taco) => {
-            console.log(taco[0].id)
+            // console.log(taco[0].id)
             localStorage.setItem(
                 "credentials",
                 JSON.stringify({
