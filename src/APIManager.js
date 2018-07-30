@@ -18,7 +18,7 @@ const APIManager = Object.create({}, {
     },
     gettingAllMealsFromDatabase: {
         value: () => {
-            return fetch("http://localhost:5002/meals?_expand=user")
+            return fetch("http://localhost:5002/meals?userId=1")
                 .then(e => e.json())
         }
     },
@@ -29,10 +29,7 @@ const APIManager = Object.create({}, {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(newObject)
             })
-                // When POST is finished, retrieve the new list of tasks
-                .then(() => {
-                    return fetch("http://localhost:5002/meals?_expand=user")
-                })
+                // When POST is finished, retrieve the new list of tasks   
                 .then(a => a.json())
         }
     },
