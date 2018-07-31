@@ -45,7 +45,7 @@ export default class DayOfTheWeek extends Component {
             .then(DayOfTheWeek => {
                 Database.gettingAllMealsFromDatabase()
                     .then(meals => {
-                        this.setState({ meals: meals })
+                        this.setState({ meals: meals})
                     }
                     )
             })
@@ -56,42 +56,7 @@ export default class DayOfTheWeek extends Component {
             .then(deletedMeal => this.setState({ meals: deletedMeal }))
     }
 
-    handleEdit = (event) => {
-        event.preventDefault()
-        fetch(`http://localhost:5002/meals/${this.state.mealToEdit.id}`, {
-            method: "PUT",
-            body: JSON.stringify(this.state.mealToEdit),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(() => { return fetch("http://localhost:5002/meals?_expand=user") })
-            .then(a => a.json())
-            .then(DayOfTheWeek => {
-                this.setState({
-                    meals: DayOfTheWeek
-                })
-            })
-    }
 
-    editMeal = (mealId) => {
-        console.log("mealId", mealId)
-        // Delete the specified meal from the API
-        fetch(`http://localhost:5002/meals/${mealId}`)
-
-            // Once the new array of meals is retrieved, set the state
-            .then(a => a.json())
-            .then(DayOfTheWeek => {
-                this.setState({
-                    mealToEdit: DayOfTheWeek
-                })
-            })
-    }
-
-    handleFieldChange = (event) => {
-        const stateToChange = this.state.mealToEdit
-        stateToChange[event.target.id] = event.target.value
-        this.setState({ mealToEdit: stateToChange })
-    }
 
 
     render() {
