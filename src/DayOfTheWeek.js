@@ -63,7 +63,7 @@ export default class DayOfTheWeek extends Component {
         return (
             <div>
                 <form id="mealForm" onSubmit={this.addMeal.bind(this)}>
-                    <h1 id="day-title" className="h3 mb-3 font-weight-normal">Monday</h1>
+                    <h1 id="day-title" className="h3 mb-3 font-weight-normal">WMP</h1>
 
                     <label htmlFor="nameOfMeal">
                         New Meal:
@@ -99,7 +99,7 @@ export default class DayOfTheWeek extends Component {
                         // console.log("meal in render", meal.id)
                         <MealCard key={meal.id}
                             {...this.props}
-                            editMeal={this.editMeal} 
+                            // editMeal={this.editMeal} 
                             deleteMeal={this.deleteMeal}
                             meal={meal} />
                     )

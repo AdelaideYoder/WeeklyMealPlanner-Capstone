@@ -8,9 +8,9 @@
   ],
   "meals": [
     {
-      "nameOfMeal": "Tacos",
+      "nameOfMeal": "Fish",
       "date": "2018-07-30",
-      "url": "www.yum.com",
+      "url": "www.food.com",
       "dayOfTheWeek": "Monday",
       "userId": 1,
       "id": 1
@@ -23,9 +23,9 @@
       "id": 2
     },
     {
-      "nameOfMeal": "pasta",
-      "date": "2018-08-03",
-      "url": "www.food.com",
+      "nameOfMeal": "Mac & ",
+      "date": "2018-08-02",
+      "url": "www.yum.com",
       "userId": 1,
       "id": 3
     }

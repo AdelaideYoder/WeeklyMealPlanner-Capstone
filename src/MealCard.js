@@ -5,7 +5,17 @@ import Database from "./APIManager"
 
 export default class MealCard extends Component  {
     state = {
-        mealToEdit: {}
+        viewForm: false
+    }
+
+    editMeal = (mealId) => {
+        // console.log("mealId", mealId)
+        fetch(`http://localhost:5002/meals/${mealId}`)
+            // Once the new array of meals is retrieved, set the state
+            .then(a => a.json())
+            .then(meals => {
+                this.setState({mealToEdit: meals, viewForm: true})
+            })
     }
 
     handleEdit = (event) => {
@@ -16,18 +26,8 @@ export default class MealCard extends Component  {
             headers: {"Content-Type": "application/json"}
         }).then(() => { return fetch("http://localhost:5002/meals?_expand=user") })
             .then(a => a.json())
-            .then(DayOfTheWeek => {
-                this.setState({meals: DayOfTheWeek})
-            })
-    }
-
-    editMeal = (mealId) => {
-        // console.log("mealId", mealId)
-        fetch(`http://localhost:5002/meals/${mealId}`)
-            // Once the new array of meals is retrieved, set the state
-            .then(a => a.json())
-            .then(DayOfTheWeek => {
-                this.setState({mealToEdit: DayOfTheWeek})
+            .then(MealCard => {
+                this.setState({mealToEdit: MealCard, viewForm: false})
             })
     }
 
@@ -38,8 +38,9 @@ export default class MealCard extends Component  {
     }
     // console.log(this.props, "this.props")
     render() {
+        if(!this.state.viewForm) {
     return (
-        <React.Fragment>
+        // <React.Fragment>
             <div className="card-body">
                 <h5 className="card-title">
                     {this.props.meal.nameOfMeal}
@@ -53,26 +54,18 @@ export default class MealCard extends Component  {
                 <a href="#" onClick={() => this.editMeal(this.props.meal.id)}>Edit</a>
                 <a href="#" onClick={() => this.props.deleteMeal(this.props.meal.id)}>Delete</a>
             </div>
-            {
-                (
-                    <form onClick={this.handleEdit.bind(this)}>
+            )
+            } else {
+                return (
+                    <form id="editForm" onSubmit={this.handleEdit}>
                         {/* <h1 className="h3 mb-3 font-weight-normal">Edit Meal</h1> */}
-                        {/* <label htmlFor="Edit Meal">
-                            Name:
-                        </label> */}
-                        {/* <input onChange={this.handleFieldChange} type="text"
-                            id="message"
-                            placeholder="Edit Message"
-                            value={this.state.mealToEdit.message}
-                            required="" autoFocus="" /> */}
-
                         {/* <label htmlFor="nameOfMeal">
                             New Meal:
                         </label> */}
                         <input onChange={this.handleFieldChange} type="text"
                             id="nameOfMeal"
                             placeholder="Enter Meal"
-                            value={this.props.meal.nameOfMeal}
+                            value={this.state.mealToEdit.nameOfMeal}
                             required="" autoFocus="" />
 
                         {/* <label htmlFor="date">
@@ -81,7 +74,7 @@ export default class MealCard extends Component  {
                         <input id="datepicker" onChange={this.handleFieldChange} type="date"
                             id="date"
                             placeholder="Enter Date"
-                            value={this.props.meal.date}
+                            value={this.state.mealToEdit.date}
                             required="" autoFocus="" />
 
                         {/* <label htmlFor="url">
@@ -90,16 +83,14 @@ export default class MealCard extends Component  {
                         <input onChange={this.handleFieldChange} type="text"
                             id="url"
                             placeholder="Optional"
-                            value={this.props.meal.url}
+                            value={this.state.mealToEdit.url}
                             required="" autoFocus="" />
                         <button type="submit">
                             Update
                         </button>
                     </form>
                 )
-
             }
-        </React.Fragment>
-    )
+        // </React.Fragment>
 }
 }
