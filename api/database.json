@@ -9,25 +9,58 @@
   "meals": [
     {
       "nameOfMeal": "Fish",
-      "date": "2018-07-30",
-      "url": "www.food.com",
-      "dayOfTheWeek": "Monday",
-      "userId": 1,
-      "id": 1
-    },
-    {
-      "nameOfMeal": "Burgers",
       "date": "2018-08-01",
       "url": "www.food.com",
+      "dayOfTheWeek": "Monday",
       "userId": 1,
       "id": 2
     },
     {
       "nameOfMeal": "Mac & ",
-      "date": "2018-08-02",
-      "url": "www.yum.com",
+      "date": "2018-08-31",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Monday",
       "userId": 1,
       "id": 3
+    },
+    {
+      "nameOfMeal": "Burgers",
+      "date": "2018-08-29",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Wednesday",
+      "userId": 1,
+      "id": 4
+    },
+    {
+      "nameOfMeal": "Burgers",
+      "date": "2018-08-13",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Tuesday",
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "nameOfMeal": "Burgers",
+      "date": "2018-08-13",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Tuesday",
+      "userId": 1,
+      "id": 6
+    },
+    {
+      "nameOfMeal": "Fish",
+      "date": "2018-08-22",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Wednesday",
+      "userId": 1,
+      "id": 7
+    },
+    {
+      "nameOfMeal": "pasta",
+      "date": "2018-10-17",
+      "url": "www.food.com",
+      "userId": 1,
+      "id": 8
     }
   ]
 }

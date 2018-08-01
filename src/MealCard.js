@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import Database from "./APIManager"
+import Moment from "moment"
 // import { Card, Button, CardTitle, CardText } from 'reactstrap';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class MealCard extends Component  {
     state = {
+
         viewForm: false
     }
 
@@ -20,12 +22,9 @@ export default class MealCard extends Component  {
 
     handleEdit = (event) => {
         event.preventDefault()
-        fetch(`http://localhost:5002/meals/${this.state.mealToEdit.id}`, {
-            method: "PUT",
-            body: JSON.stringify(this.state.mealToEdit),
-            headers: {"Content-Type": "application/json"}
-        }).then(() => { return fetch("http://localhost:5002/meals?_expand=user") })
-            .then(a => a.json())
+        Database.handleEdit(this.state.mealToEdit)
+            //refresh just the card
+            // Database.getOneMealCard(event)
             .then(MealCard => {
                 this.setState({mealToEdit: MealCard, viewForm: false})
             })
@@ -46,7 +45,10 @@ export default class MealCard extends Component  {
                     {this.props.meal.nameOfMeal}
                 </h5>
                 <p>
-                    {this.props.meal.date}
+                {Moment(this.props.meal.date).format("dddd")}
+                </p>
+                <p>
+                {Moment(this.props.meal.date).format(" M/D/YY")}
                 </p>
                 <p>
                     {this.props.meal.url}

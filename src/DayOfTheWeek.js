@@ -6,7 +6,7 @@ import Database from "./APIManager"
 export default class DayOfTheWeek extends Component {
     state = {
         meals: [],
-        mealsToEdit: {}
+        // mealsToEdit: {}
     }
 
     // "fetching" the state from the database 
@@ -33,26 +33,33 @@ export default class DayOfTheWeek extends Component {
     }
     addMeal = (event) => {
         event.preventDefault()
+        console.log("event.target", event.target)
         // let timestamp = Moment().format("YYYY-MM-DD hh:mm:ss a");
         const newObject = {
             nameOfMeal: this.state.nameOfMeal,
             date: this.state.date,
             url: this.state.url,
+            dayOfTheWeek: this.state.dayOfTheWeek,
             // creationDateTime: timestamp,
             userId: Database.getIdOfCurrentUser()
         }
+        console.log(event.target.childNodes)
+        const childNodeArray = event.target.childNodes
         Database.addMeal(newObject)
             .then(DayOfTheWeek => {
+                for (let i = 2; i < 10; i+=2) {
+                    childNodeArray[i].value = ""
+                }
                 Database.gettingAllMealsFromDatabase()
                     .then(meals => {
-                        this.setState({ meals: meals})
+                        this.setState({ meals: meals })
                     }
                     )
             })
     }
 
     deleteMeal = (mealId) => {
-        Database.deleteMeal(mealId) 
+        Database.deleteMeal(mealId)
             .then(deletedMeal => this.setState({ meals: deletedMeal }))
     }
 
@@ -70,6 +77,7 @@ export default class DayOfTheWeek extends Component {
                 </label>
                     <input onChange={this.messageFormInput} type="text"
                         id="nameOfMeal"
+                        defaultValue=""
                         placeholder="Enter Meal"
                         required="" autoFocus="" />
 
