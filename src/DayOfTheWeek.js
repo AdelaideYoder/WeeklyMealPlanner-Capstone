@@ -47,15 +47,16 @@ export default class DayOfTheWeek extends Component {
         const childNodeArray = event.target.childNodes
         Database.addMeal(newObject)
             .then(DayOfTheWeek => {
-                for (let i = 2; i < 10; i+=2) {
-                    childNodeArray[i].value = ""
-                }
+
                 Database.gettingAllMealsFromDatabase()
                     .then(meals => {
                         this.setState({ meals: meals })
                     }
                     )
             })
+            this.refs.nameOfMeal.value = ""
+            this.refs.dateOfMeal.value = ""
+            this.refs.urlOfMeal.value = ""
     }
 
     deleteMeal = (mealId) => {
@@ -77,7 +78,7 @@ export default class DayOfTheWeek extends Component {
                 </label>
                     <input onChange={this.messageFormInput} type="text"
                         id="nameOfMeal"
-                        defaultValue=""
+                        ref="nameOfMeal"
                         placeholder="Enter Meal"
                         required="" autoFocus="" />
 
@@ -87,6 +88,7 @@ export default class DayOfTheWeek extends Component {
                     <input id="datepicker" onChange={this.messageFormInput} type="date"
                         id="date"
                         placeholder="Enter Date"
+                        ref="dateOfMeal"
                         required="" autoFocus="" />
 
                     <label htmlFor="url">
@@ -95,6 +97,7 @@ export default class DayOfTheWeek extends Component {
                     <input onChange={this.messageFormInput} type="text"
                         id="url"
                         placeholder="Optional"
+                        ref="urlOfMeal"
                         required="" autoFocus="" />
 
                     <button type="submit">

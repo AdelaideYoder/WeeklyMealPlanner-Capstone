@@ -7,7 +7,9 @@ import Moment from "moment"
 export default class MealCard extends Component  {
     state = {
 
-        viewForm: false
+        viewForm: false,
+        mealToEdit: {...this.props.meal}
+
     }
 
     editMeal = (mealId) => {
@@ -21,7 +23,7 @@ export default class MealCard extends Component  {
     }
 
     handleEdit = (event) => {
-        event.preventDefault()
+        // event.preventDefault()
         Database.handleEdit(this.state.mealToEdit)
             //refresh just the card
             // Database.getOneMealCard(event)
