@@ -49,6 +49,12 @@ const APIManager = Object.create({}, {
                 .then(e => e.json())
         }
     },
+    getMealByDay: {
+        value: (day) => {
+            return fetch(`http://localhost:5002/meals?userId=1&dayOfTheWeek=${day}&_sort=date&_order=desc`)
+                .then(e => e.json())
+        }
+    },
         deleteMeal: {
             value: (mealId) => {
                 // Delete the specified meal

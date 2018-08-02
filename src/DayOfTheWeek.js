@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import MealCard from "./MealCard"
 import Database from "./APIManager"
-
+import Moment from "moment"
+import WeekPlan from "./WeekPlan"
 
 export default class DayOfTheWeek extends Component {
     state = {
@@ -39,20 +40,18 @@ export default class DayOfTheWeek extends Component {
             nameOfMeal: this.state.nameOfMeal,
             date: this.state.date,
             url: this.state.url,
-            dayOfTheWeek: this.state.dayOfTheWeek,
+            dayOfTheWeek:   Moment(this.state.date).format("dddd"),
             // creationDateTime: timestamp,
             userId: Database.getIdOfCurrentUser()
         }
         console.log(event.target.childNodes)
-        const childNodeArray = event.target.childNodes
+        // const childNodeArray = event.target.childNodes
         Database.addMeal(newObject)
             .then(DayOfTheWeek => {
-
                 Database.gettingAllMealsFromDatabase()
                     .then(meals => {
                         this.setState({ meals: meals })
-                    }
-                    )
+                    })
             })
             this.refs.nameOfMeal.value = ""
             this.refs.dateOfMeal.value = ""
@@ -70,7 +69,7 @@ export default class DayOfTheWeek extends Component {
     render() {
         return (
             <div>
-                <form id="mealForm" onSubmit={this.addMeal.bind(this)}>
+                <form className="grid-item" id="mealForm" onSubmit={this.addMeal.bind(this)}>
                     <h1 id="day-title" className="h3 mb-3 font-weight-normal">WMP</h1>
 
                     <label htmlFor="nameOfMeal">
@@ -105,7 +104,7 @@ export default class DayOfTheWeek extends Component {
                 </button>
                 </form>
 
-                {
+                {/* {
                     this.state.meals.map(meal =>
                         // console.log("meal in render", meal.id)
                         <MealCard key={meal.id}
@@ -114,7 +113,8 @@ export default class DayOfTheWeek extends Component {
                             deleteMeal={this.deleteMeal}
                             meal={meal} />
                     )
-                }
+                } */}
+                <WeekPlan />
             </div>
         )
     }

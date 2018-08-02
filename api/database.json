@@ -8,18 +8,36 @@
   ],
   "meals": [
     {
-      "nameOfMeal": "Burgers",
-      "date": "2018-08-14",
-      "url": "",
+      "nameOfMeal": "Salad",
+      "date": "2018-08-06",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Monday",
       "userId": 1,
       "id": 1
     },
     {
       "nameOfMeal": "Fish",
-      "date": "2018-08-23",
+      "date": "2018-08-27",
       "url": "www.food.com",
+      "dayOfTheWeek": "Monday",
       "userId": 1,
       "id": 2
+    },
+    {
+      "nameOfMeal": "Pasta",
+      "date": "2018-08-16",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Thursday",
+      "userId": 1,
+      "id": 3
+    },
+    {
+      "nameOfMeal": "Dessert",
+      "date": "2018-08-22",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Wednesday",
+      "userId": 1,
+      "id": 4
     }
   ]
 }
