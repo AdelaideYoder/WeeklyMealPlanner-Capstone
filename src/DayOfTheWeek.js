@@ -6,7 +6,7 @@ import Database from "./APIManager"
 export default class DayOfTheWeek extends Component {
     state = {
         meals: [],
-        mealsToEdit: {}
+        // mealsToEdit: {}
     }
 
     // "fetching" the state from the database 
@@ -33,36 +33,52 @@ export default class DayOfTheWeek extends Component {
     }
     addMeal = (event) => {
         event.preventDefault()
+        console.log("event.target", event.target)
         // let timestamp = Moment().format("YYYY-MM-DD hh:mm:ss a");
         const newObject = {
             nameOfMeal: this.state.nameOfMeal,
             date: this.state.date,
             url: this.state.url,
+            dayOfTheWeek: this.state.dayOfTheWeek,
             // creationDateTime: timestamp,
             userId: Database.getIdOfCurrentUser()
         }
+        console.log(event.target.childNodes)
+        const childNodeArray = event.target.childNodes
         Database.addMeal(newObject)
             .then(DayOfTheWeek => {
+
                 Database.gettingAllMealsFromDatabase()
                     .then(meals => {
                         this.setState({ meals: meals })
                     }
                     )
             })
+            this.refs.nameOfMeal.value = ""
+            this.refs.dateOfMeal.value = ""
+            this.refs.urlOfMeal.value = ""
     }
+
+    deleteMeal = (mealId) => {
+        Database.deleteMeal(mealId)
+            .then(deletedMeal => this.setState({ meals: deletedMeal }))
+    }
+
+
 
 
     render() {
         return (
             <div>
                 <form id="mealForm" onSubmit={this.addMeal.bind(this)}>
-                    <h1 id="day-title" className="h3 mb-3 font-weight-normal">Monday</h1>
+                    <h1 id="day-title" className="h3 mb-3 font-weight-normal">WMP</h1>
 
                     <label htmlFor="nameOfMeal">
                         New Meal:
                 </label>
                     <input onChange={this.messageFormInput} type="text"
                         id="nameOfMeal"
+                        ref="nameOfMeal"
                         placeholder="Enter Meal"
                         required="" autoFocus="" />
 
@@ -72,6 +88,7 @@ export default class DayOfTheWeek extends Component {
                     <input id="datepicker" onChange={this.messageFormInput} type="date"
                         id="date"
                         placeholder="Enter Date"
+                        ref="dateOfMeal"
                         required="" autoFocus="" />
 
                     <label htmlFor="url">
@@ -80,6 +97,7 @@ export default class DayOfTheWeek extends Component {
                     <input onChange={this.messageFormInput} type="text"
                         id="url"
                         placeholder="Optional"
+                        ref="urlOfMeal"
                         required="" autoFocus="" />
 
                     <button type="submit">
@@ -91,8 +109,9 @@ export default class DayOfTheWeek extends Component {
                     this.state.meals.map(meal =>
                         // console.log("meal in render", meal.id)
                         <MealCard key={meal.id}
-                        {...this.props} 
-                            // EditChat={this.EditChat} 
+                            {...this.props}
+                            // editMeal={this.editMeal} 
+                            deleteMeal={this.deleteMeal}
                             meal={meal} />
                     )
                 }

@@ -8,3 +8,13 @@ body {
   width: 150px;
   padding: 10px;
 }
+
+.card-body {
+  border: 2px solid;
+  width: 150px;
+}
+
+#editForm {
+  border: 2px solid;
+  width: 150px;
+}
