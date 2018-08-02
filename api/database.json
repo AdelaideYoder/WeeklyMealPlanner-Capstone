@@ -9,10 +9,17 @@
   "meals": [
     {
       "nameOfMeal": "Burgers",
-      "date": "2018-08-08",
-      "url": "www.food.com",
+      "date": "2018-08-14",
+      "url": "",
       "userId": 1,
       "id": 1
+    },
+    {
+      "nameOfMeal": "Fish",
+      "date": "2018-08-23",
+      "url": "www.food.com",
+      "userId": 1,
+      "id": 2
     }
   ]
 }
