@@ -1,18 +1,30 @@
-import React from 'react'
+import React, {Component} from 'react'
 import MealBox from "./MealBox"
 
-export default props => {
+export default class WeekPlan extends Component {
     // console.log(props, "props")
-    
 
-    return (
-        <div>
-        <MealBox className="grid-item" id="Mon" dayToShow="Monday" />
-        <MealBox className="grid-item" id="Tue" dayToShow="Tuesday" />
-        <MealBox className="grid-item" id="Wed" dayToShow="Wednesday" />
-        <MealBox className="grid-item" id="Thurs" dayToShow="Thursday" />
-        <MealBox className="grid-item" id="Fri" dayToShow="Friday" />
+    render() {
+        return (
+            <React.Fragment>
+                <div className="monCol">
+                <MealBox className="monday" dayToShow="Monday" />
+                </div>
+                <div className="tueCol">
+                <MealBox className="tuesday" dayToShow="Tuesday" />
+                </div>
+                <div className="wedCol">
+                <MealBox className="wednesday" dayToShow="Wednesday" />
+                </div>
+                <div className="thursCol">
+                <MealBox className="thursday" dayToShow="Thursday" />
+                </div>
+                <div className="friCol">
+                <MealBox className="friday" dayToShow="Friday" />
+                </div>
 
-        </div>
-    )
+            </React.Fragment>
+        )
+    }
+
 }

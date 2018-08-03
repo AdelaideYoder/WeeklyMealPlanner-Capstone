@@ -24,7 +24,7 @@
       "id": 2
     },
     {
-      "nameOfMeal": "Pasta",
+      "nameOfMeal": "Salmon",
       "date": "2018-08-16",
       "url": "www.food.com",
       "dayOfTheWeek": "Thursday",
@@ -38,6 +38,22 @@
       "dayOfTheWeek": "Wednesday",
       "userId": 1,
       "id": 4
+    },
+    {
+      "nameOfMeal": "Pizza",
+      "date": "2018-08-15",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Wednesday",
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "nameOfMeal": "Burgers",
+      "date": "2018-08-29",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Wednesday",
+      "userId": 1,
+      "id": 6
     }
   ]
 }

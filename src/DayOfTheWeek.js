@@ -68,7 +68,7 @@ export default class DayOfTheWeek extends Component {
 
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <form className="grid-item" id="mealForm" onSubmit={this.addMeal.bind(this)}>
                     <h1 id="day-title" className="h3 mb-3 font-weight-normal">WMP</h1>
 
@@ -114,8 +114,8 @@ export default class DayOfTheWeek extends Component {
                             meal={meal} />
                     )
                 } */}
-                <WeekPlan />
-            </div>
+                <WeekPlan className="grid-container" />
+            </React.Fragment>
         )
     }
 }

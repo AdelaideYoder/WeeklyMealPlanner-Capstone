@@ -10,7 +10,7 @@ class ApplicationViews extends Component {
     return (
 
     <React.Fragment>
-      <DayOfTheWeek className="grid-container" />
+      <DayOfTheWeek />
     </React.Fragment>
     )
   }
