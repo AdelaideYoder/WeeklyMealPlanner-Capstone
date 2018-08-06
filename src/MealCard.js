@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import Database from "./APIManager"
+import APIManager from "./APIManager"
 import Moment from "moment"
-// import { Card, Button, CardTitle, CardText } from 'reactstrap';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import { Card, CardBody, Button, CardTitle, CardText, Form, FormGroup, Label, Input, FormText  } from 'reactstrap';
 
 export default class MealCard extends Component  {
     state = {
@@ -24,11 +23,12 @@ export default class MealCard extends Component  {
 
     handleEdit = (event) => {
         // event.preventDefault()
-        Database.handleEdit(this.state.mealToEdit)
+        APIManager.handleEdit(this.state.mealToEdit)
             //refresh just the card
-            // Database.getOneMealCard(event)
+            // APIManager.getOneMealCard(event)
             .then(MealCard => {
                 this.setState({mealToEdit: MealCard, viewForm: false})
+                this.props.getMeals()
             })
     }
 
@@ -42,10 +42,12 @@ export default class MealCard extends Component  {
         if(!this.state.viewForm) {
     return (
         // <React.Fragment>
-            <div className="card-body">
-                <h5 className="card-title">
+        <Card>
+            <CardBody>
+                <CardTitle className="card-title">
                     {this.props.meal.nameOfMeal}
-                </h5>
+                </CardTitle>
+                <CardText>
                 <p>
                 {Moment(this.props.meal.date).format("dddd")}
                 </p>
@@ -55,18 +57,20 @@ export default class MealCard extends Component  {
                 <p>
                     {this.props.meal.url}
                 </p>
-                <a href="#" onClick={() => this.editMeal(this.props.meal.id)}>Edit</a>
-                <a href="#" onClick={() => this.props.deleteMeal(this.props.meal.id)}>Delete</a>
-            </div>
+                <Button href="#" onClick={() => this.editMeal(this.props.meal.id)}>Edit</Button>
+                <Button href="#" onClick={() => this.props.deleteMeal(this.props.meal.id)}>Delete</Button>
+                </CardText>
+            </CardBody>
+            </Card>
             )
             } else {
                 return (
-                    <form id="editForm" onSubmit={this.handleEdit}>
+                    <Form id="editForm" onSubmit={this.handleEdit}>
                         {/* <h1 className="h3 mb-3 font-weight-normal">Edit Meal</h1> */}
                         {/* <label htmlFor="nameOfMeal">
                             New Meal:
                         </label> */}
-                        <input onChange={this.handleFieldChange} type="text"
+                        <Input onChange={this.handleFieldChange} type="text"
                             id="nameOfMeal"
                             placeholder="Enter Meal"
                             value={this.state.mealToEdit.nameOfMeal}
@@ -75,7 +79,7 @@ export default class MealCard extends Component  {
                         {/* <label htmlFor="date">
                             Date:
                         </label> */}
-                        <input id="datepicker" onChange={this.handleFieldChange} type="date"
+                        <Input id="datepicker" onChange={this.handleFieldChange} type="date"
                             id="date"
                             placeholder="Enter Date"
                             value={this.state.mealToEdit.date}
@@ -84,15 +88,15 @@ export default class MealCard extends Component  {
                         {/* <label htmlFor="url">
                             Recipe URL:
                         </label> */}
-                        <input onChange={this.handleFieldChange} type="text"
+                        <Input onChange={this.handleFieldChange} type="text"
                             id="url"
                             placeholder="Optional"
                             value={this.state.mealToEdit.url}
                             required="" autoFocus="" />
-                        <button type="submit">
+                        <Button type="submit">
                             Update
-                        </button>
-                    </form>
+                        </Button>
+                    </Form>
                 )
             }
         // </React.Fragment>

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import MealCard from "./MealCard"
-import Database from "./APIManager"
-
+import APIManager from "./APIManager"
+import Moment from "moment"
+import WeekPlan from "./WeekPlan"
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 export default class DayOfTheWeek extends Component {
     state = {
@@ -11,12 +13,16 @@ export default class DayOfTheWeek extends Component {
 
     // "fetching" the state from the database 
     componentDidMount() {
-        Database.gettingAllMealsFromDatabase()
+        APIManager.gettingAllMealsFromDatabase()
             .then(meals => {
                 // console.log("meals", meals)
                 this.setState({ meals: meals })
             }
             )
+    }
+
+    reloadPage = () => {
+        window.location.reload(true);
     }
 
     //checking to see if the state has changed
@@ -28,7 +34,7 @@ export default class DayOfTheWeek extends Component {
         // console.log("this.state", this.state)
     }
     getUserNameByUserId = (userId) => {
-        Database.getUserNameByUserId(userId)
+        APIManager.getUserNameByUserId(userId)
             .then(userName => this.setState({ meals: userName }))
     }
     addMeal = (event) => {
@@ -39,73 +45,71 @@ export default class DayOfTheWeek extends Component {
             nameOfMeal: this.state.nameOfMeal,
             date: this.state.date,
             url: this.state.url,
-            dayOfTheWeek: this.state.dayOfTheWeek,
+            dayOfTheWeek:   Moment(this.state.date).format("dddd"),
             // creationDateTime: timestamp,
-            userId: Database.getIdOfCurrentUser()
+            userId: APIManager.getIdOfCurrentUser()
         }
         console.log(event.target.childNodes)
-        const childNodeArray = event.target.childNodes
-        Database.addMeal(newObject)
+        // const childNodeArray = event.target.childNodes
+        APIManager.addMeal(newObject)
             .then(DayOfTheWeek => {
-
-                Database.gettingAllMealsFromDatabase()
+                APIManager.gettingAllMealsFromDatabase()
                     .then(meals => {
                         this.setState({ meals: meals })
-                    }
-                    )
+                    })
             })
             this.refs.nameOfMeal.value = ""
             this.refs.dateOfMeal.value = ""
             this.refs.urlOfMeal.value = ""
-    }
-
-    deleteMeal = (mealId) => {
-        Database.deleteMeal(mealId)
-            .then(deletedMeal => this.setState({ meals: deletedMeal }))
+            this.reloadPage()
     }
 
 
 
+    // deleteMeal = (mealId) => {
+    //     APIManager.deleteMeal(mealId)
+    //         .then(deletedMeal => this.setState({ meals: deletedMeal }))
+    // }
 
     render() {
         return (
-            <div>
-                <form id="mealForm" onSubmit={this.addMeal.bind(this)}>
-                    <h1 id="day-title" className="h3 mb-3 font-weight-normal">WMP</h1>
+            <React.Fragment>
+                <Form className="grid-item" id="mealForm" onSubmit={this.addMeal.bind(this)}>
+                    <h1 id="day-title" className="h3 mb-3 font-weight-normal">Weekly Meal Planner</h1>
 
-                    <label htmlFor="nameOfMeal">
+                    <Label htmlFor="nameOfMeal">
                         New Meal:
-                </label>
-                    <input onChange={this.messageFormInput} type="text"
+                </Label>
+                    <Input onChange={this.messageFormInput} type="text"
                         id="nameOfMeal"
                         ref="nameOfMeal"
                         placeholder="Enter Meal"
                         required="" autoFocus="" />
 
-                    <label htmlFor="date">
+                    <Label htmlFor="date">
                         Date:
-                </label>
-                    <input id="datepicker" onChange={this.messageFormInput} type="date"
+                </Label>
+                    <Input id="datepicker" onChange={this.messageFormInput} type="date"
                         id="date"
                         placeholder="Enter Date"
                         ref="dateOfMeal"
                         required="" autoFocus="" />
 
-                    <label htmlFor="url">
+                    <Label htmlFor="url">
                         Recipe URL:
-                </label>
-                    <input onChange={this.messageFormInput} type="text"
+                </Label>
+                    <Input onChange={this.messageFormInput} type="text"
                         id="url"
                         placeholder="Optional"
                         ref="urlOfMeal"
                         required="" autoFocus="" />
 
-                    <button type="submit">
+                    <Button type="submit">
                         Submit
-                </button>
-                </form>
+                </Button>
+                </Form>
 
-                {
+                {/* {
                     this.state.meals.map(meal =>
                         // console.log("meal in render", meal.id)
                         <MealCard key={meal.id}
@@ -114,8 +118,9 @@ export default class DayOfTheWeek extends Component {
                             deleteMeal={this.deleteMeal}
                             meal={meal} />
                     )
-                }
-            </div>
+                } */}
+                <WeekPlan className="grid-container" />
+            </React.Fragment>
         )
     }
 }
