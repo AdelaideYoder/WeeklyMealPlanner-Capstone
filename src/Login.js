@@ -1,5 +1,7 @@
 import APIManager from "./APIManager"
 import React, { Component } from "react"
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+
 
 export default class Login extends Component {
     state = {
@@ -39,8 +41,15 @@ export default class Login extends Component {
     render() {
         return (
             <div className="login">
-            <form onSubmit={this.handleLogin}>
+            <Form onSubmit={this.handleLogin}>
                 <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+                <label htmlFor="inputUserName">
+                    UserName:
+                </label>
+                <input onChange={this.handleFieldChange} type="text"
+                    id="userName"
+                    placeholder="Enter UserName"
+                    required="" />
                 <label htmlFor="inputEmail">
                     Email address:
                 </label>
@@ -55,20 +64,13 @@ export default class Login extends Component {
                     id="password"
                     placeholder="Password"
                     required="" />
-                <label htmlFor="inputUserName">
-                    UserName:
-                </label>
-                <input onChange={this.handleFieldChange} type="text"
-                    id="userName"
-                    placeholder="Enter UserName"
-                    required="" />
                 <button type="submit"onClick={() => window.location.reload()
                 }>
                 Sign In
                 </button>
                 <br></br>
                 <input type="checkbox" name="checkbox" /> <label>REMEMBER ME</label>
-            </form>
+            </Form>
             </div>
         )
     }

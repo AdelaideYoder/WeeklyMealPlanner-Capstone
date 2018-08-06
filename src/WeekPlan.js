@@ -7,19 +7,19 @@ export default class WeekPlan extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="monCol">
+                <div className="monCol grid-item">
                 <MealBox className="monday" dayToShow="Monday" />
                 </div>
-                <div className="tueCol">
+                <div className="tueCol grid-item">
                 <MealBox className="tuesday" dayToShow="Tuesday" />
                 </div>
-                <div className="wedCol">
+                <div className="wedCol grid-item">
                 <MealBox className="wednesday" dayToShow="Wednesday" />
                 </div>
-                <div className="thursCol">
+                <div className="thursCol grid-item">
                 <MealBox className="thursday" dayToShow="Thursday" />
                 </div>
-                <div className="friCol">
+                <div className="friCol grid-item">
                 <MealBox className="friday" dayToShow="Friday" />
                 </div>
 

@@ -8,11 +8,29 @@ export default class MealBox extends Component {
         mealsToShow: []
     }
 
-    componentDidMount() {
-        APIManager.getMealByDay(this.props.dayToShow)
+    getMeals = () => {
+    APIManager.getMealByDay(this.props.dayToShow)
             .then(response => {
                 this.setState({ mealsToShow: response })
             })
+        }
+
+    componentDidMount() {
+        return this.getMeals()
+        // APIManager.getMealByDay(this.props.dayToShow)
+        //     .then(response => {
+        //         this.setState({ mealsToShow: response })
+        //     })
+    }
+
+    deleteMeal = (mealId) => {
+        // APIManager.deleteMeal(mealId)
+        //     .then(deletedMeal => this.setState({ mealsToShow: deletedMeal }))
+        APIManager.deleteMeal(mealId)
+        .then(() => {
+            this.getMeals()
+        })
+
     }
 
 
@@ -24,7 +42,8 @@ export default class MealBox extends Component {
                 {this.state.mealsToShow.map(meal =>
                     // console.log("meal in render", meal.id)
                     <MealCard key={meal.id}
-                        {...this.props}
+                        // {...this.props}
+                        getMeals={this.getMeals}
                         // editMeal={this.editMeal} 
                         deleteMeal={this.deleteMeal}
                         meal={meal} />

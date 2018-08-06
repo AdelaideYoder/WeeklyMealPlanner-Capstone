@@ -8,52 +8,83 @@
   ],
   "meals": [
     {
-      "nameOfMeal": "Salad",
-      "date": "2018-08-06",
+      "nameOfMeal": "Burgers",
+      "date": "2018-07-30",
       "url": "www.food.com",
       "dayOfTheWeek": "Monday",
       "userId": 1,
       "id": 1
     },
     {
-      "nameOfMeal": "Fish",
-      "date": "2018-08-27",
+      "nameOfMeal": "pasta",
+      "date": "2018-07-31",
       "url": "www.food.com",
-      "dayOfTheWeek": "Monday",
+      "dayOfTheWeek": "Tuesday",
       "userId": 1,
       "id": 2
     },
     {
-      "nameOfMeal": "Salmon",
-      "date": "2018-08-16",
+      "nameOfMeal": "Fish",
+      "date": "2018-08-01",
       "url": "www.food.com",
-      "dayOfTheWeek": "Thursday",
+      "dayOfTheWeek": "Wednesday",
       "userId": 1,
       "id": 3
     },
     {
-      "nameOfMeal": "Dessert",
-      "date": "2018-08-22",
+      "nameOfMeal": "Pasta",
+      "date": "2018-08-02",
       "url": "www.food.com",
-      "dayOfTheWeek": "Wednesday",
+      "dayOfTheWeek": "Thursday",
       "userId": 1,
       "id": 4
     },
     {
-      "nameOfMeal": "Pizza",
-      "date": "2018-08-15",
+      "nameOfMeal": "Salad",
+      "date": "2018-08-03",
       "url": "www.food.com",
-      "dayOfTheWeek": "Wednesday",
+      "dayOfTheWeek": "Friday",
       "userId": 1,
       "id": 5
     },
     {
-      "nameOfMeal": "Burgers",
-      "date": "2018-08-29",
+      "nameOfMeal": "Fish",
+      "date": "2018-08-06",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Monday",
+      "userId": 1,
+      "id": 6
+    },
+    {
+      "nameOfMeal": "Meatloaf",
+      "date": "2018-08-07",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Tuesday",
+      "userId": 1,
+      "id": 7
+    },
+    {
+      "nameOfMeal": "Pizza",
+      "date": "2018-08-08",
       "url": "www.food.com",
       "dayOfTheWeek": "Wednesday",
       "userId": 1,
-      "id": 6
+      "id": 8
+    },
+    {
+      "nameOfMeal": "Burgers",
+      "date": "2018-08-09",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Thursday",
+      "userId": 1,
+      "id": 9
+    },
+    {
+      "nameOfMeal": "Pasta",
+      "date": "2018-08-10",
+      "dayOfTheWeek": "Friday",
+      "userId": 1,
+      "id": 10
     }
   ]
 }
