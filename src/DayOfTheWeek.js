@@ -13,7 +13,8 @@ export default class DayOfTheWeek extends Component {
 
     // "fetching" the state from the database 
     componentDidMount() {
-        APIManager.gettingAllMealsFromDatabase()
+        const currentUser = APIManager.getIdOfCurrentUser()
+        APIManager.gettingAllMealsFromDatabase(currentUser)
             .then(meals => {
                 // console.log("meals", meals)
                 this.setState({ meals: meals })

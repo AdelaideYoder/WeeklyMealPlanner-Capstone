@@ -9,7 +9,8 @@ export default class MealBox extends Component {
     }
 
     getMeals = () => {
-    APIManager.getMealByDay(this.props.dayToShow)
+        const currentUser = APIManager.getIdOfCurrentUser()
+    APIManager.getMealByDay(currentUser, this.props.dayToShow)
             .then(response => {
                 this.setState({ mealsToShow: response })
             })
