@@ -3,7 +3,7 @@ import MealCard from "./MealCard"
 import APIManager from "./APIManager"
 import Moment from "moment"
 import WeekPlan from "./WeekPlan"
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, Label, Input } from 'reactstrap';
 
 export default class DayOfTheWeek extends Component {
     state = {
@@ -13,7 +13,8 @@ export default class DayOfTheWeek extends Component {
 
     // "fetching" the state from the database 
     componentDidMount() {
-        APIManager.gettingAllMealsFromDatabase()
+        const currentUser = APIManager.getIdOfCurrentUser()
+        APIManager.gettingAllMealsFromDatabase(currentUser)
             .then(meals => {
                 // console.log("meals", meals)
                 this.setState({ meals: meals })

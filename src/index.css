@@ -10,11 +10,11 @@ body {
   width: 150px;
   padding: 10px;
 } */
-/* 
+
 .card {
-  width: 200px;
+  height: 256px;
   box-align: center;
-} */
+}
 .card-body {
   text-align: center;
   box-align: center;
@@ -50,8 +50,23 @@ body {
     
   /* Determines the number of rows and how tall each row is relative to the others */
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    background-color: aqua;
     /* max-height: 100vh;
     min-height: 100vh; */
+  }
+
+  .login {
+        /* The chat div starts at the beginning of column one */
+        grid-column-start: 1;
+      
+        /* The chat div ends at the beginning of column 2 */
+          grid-column-end: 2;
+          
+        /* The chat div starts at the beginning of row 4 */
+          grid-row-start: 2;
+          
+        /* The chat div ends at the beginning of row 7 (row 7 doesn't actually exist, so it just ends at the bottom of the page) */
+          grid-row-end: 6;
   }
 
   #mealForm {

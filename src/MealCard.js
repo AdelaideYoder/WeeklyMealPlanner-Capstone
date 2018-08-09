@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import APIManager from "./APIManager"
 import Moment from "moment"
-import { Card, CardBody, Button, CardTitle, CardText, Form, FormGroup, Label, Input, FormText  } from 'reactstrap';
+import { Card, CardBody, Button, CardTitle, CardText, Form, Input  } from 'reactstrap';
 
 export default class MealCard extends Component  {
     state = {
