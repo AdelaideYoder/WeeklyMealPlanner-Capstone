@@ -3,7 +3,7 @@ import MealCard from "./MealCard"
 import APIManager from "./APIManager"
 import Moment from "moment"
 import WeekPlan from "./WeekPlan"
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, Label, Input } from 'reactstrap';
 
 export default class DayOfTheWeek extends Component {
     state = {

@@ -110,6 +110,75 @@
       "dayOfTheWeek": "Monday",
       "userId": 4,
       "id": 11
+    },
+    {
+      "nameOfMeal": "Burgers",
+      "date": "2018-08-14",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Tuesday",
+      "userId": 4,
+      "id": 12
+    },
+    {
+      "nameOfMeal": "Salad",
+      "date": "2018-08-15",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Wednesday",
+      "userId": 4,
+      "id": 13
+    },
+    {
+      "nameOfMeal": "Salad",
+      "date": "2018-08-16",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Thursday",
+      "userId": 4,
+      "id": 14
+    },
+    {
+      "nameOfMeal": "Mac & Cheese",
+      "date": "2018-08-06",
+      "dayOfTheWeek": "Monday",
+      "userId": 1,
+      "id": 15
+    },
+    {
+      "nameOfMeal": "Burgers",
+      "date": "2018-08-06",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Monday",
+      "userId": 3,
+      "id": 16
+    },
+    {
+      "nameOfMeal": "Fish",
+      "date": "2018-08-07",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Tuesday",
+      "userId": 3,
+      "id": 17
+    },
+    {
+      "nameOfMeal": "Pasta",
+      "date": "2018-08-08",
+      "url": "www.food.com",
+      "dayOfTheWeek": "Wednesday",
+      "userId": 3,
+      "id": 18
+    },
+    {
+      "nameOfMeal": "Salad",
+      "date": "2018-08-09",
+      "dayOfTheWeek": "Thursday",
+      "userId": 3,
+      "id": 19
+    },
+    {
+      "nameOfMeal": "Tacos",
+      "date": "2018-08-10",
+      "dayOfTheWeek": "Friday",
+      "userId": 3,
+      "id": 20
     }
   ]
 }

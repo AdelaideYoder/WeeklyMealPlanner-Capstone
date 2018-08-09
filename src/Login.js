@@ -1,6 +1,6 @@
 import APIManager from "./APIManager"
 import React, { Component } from "react"
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, Label, Input } from 'reactstrap';
 
 
 export default class Login extends Component {
@@ -71,67 +71,68 @@ export default class Login extends Component {
     render() {
         return (
             <React.Fragment>
+                <h1>Welcome</h1>
                 <div className="login">
                     <Form onSubmit={this.handleLogin}>
                         <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-                        <label htmlFor="inputUserName">
+                        <Label htmlFor="inputUserName">
                             UserName:
-                </label>
-                        <input onChange={this.handleFieldChange} type="text"
+                </Label>
+                        <Input onChange={this.handleFieldChange} type="text"
                             id="userName"
                             placeholder="Enter UserName"
                             required="" />
-                        <label htmlFor="inputEmail">
+                        <Label htmlFor="inputEmail">
                             Email address:
-                </label>
-                        <input onChange={this.handleFieldChange} type="email"
+                </Label>
+                        <Input onChange={this.handleFieldChange} type="email"
                             id="email"
                             placeholder="Email address"
                             required="" autoFocus="" />
-                        <label htmlFor="inputPassword">
+                        <Label htmlFor="inputPassword">
                             Password:
-                </label>
-                        <input onChange={this.handleFieldChange} type="password"
+                </Label>
+                        <Input onChange={this.handleFieldChange} type="password"
                             id="password"
                             placeholder="Password"
                             required="" />
-                        <button type="submit" onClick={() => window.location.reload()
+                        <Button type="submit" onClick={() => window.location.reload()
                         }>
                             Sign In
-                </button>
+                </Button>
                         <br></br>
-                        <input type="checkbox" name="checkbox" /> <label>REMEMBER ME</label>
+                        <input type="checkbox" name="checkbox" /> <Label>REMEMBER ME</Label>
                     </Form>
                 </div>
 
-                <div className="login">
+                <div className="register">
                     <Form onSubmit={this.handleRegister}>
                         <h1 className="h3 mb-3 font-weight-normal">Please Register</h1>
-                        <label htmlFor="inputUserName">
+                        <Label htmlFor="inputUserName">
                             UserName:
-    </label>
-                        <input onChange={this.handleFieldChange} type="text"
+    </Label>
+                        <Input onChange={this.handleFieldChange} type="text"
                             id="userName"
                             placeholder="Enter UserName"
                             required="" />
-                        <label htmlFor="inputEmail">
+                        <Label htmlFor="inputEmail">
                             Email address:
-    </label>
-                        <input onChange={this.handleFieldChange} type="email"
+    </Label>
+                        <Input onChange={this.handleFieldChange} type="email"
                             id="email"
                             placeholder="Email address"
                             required="" autoFocus="" />
-                        <label htmlFor="inputPassword">
+                        <Label htmlFor="inputPassword">
                             Password:
-    </label>
-                        <input onChange={this.handleFieldChange} type="password"
+    </Label>
+                        <Input onChange={this.handleFieldChange} type="password"
                             id="password"
                             placeholder="Password"
                             required="" />
-                        <button type="submit" onClick={() => window.location.reload()
+                        <Button type="submit" onClick={() => window.location.reload()
                         }>
                             Register
-    </button>
+    </Button>
                         <br></br>
                     </Form>
                 </div>
